@@ -4,6 +4,7 @@ from django.views.generic import View
 from pytube import YouTube
 from django.http import FileResponse
 from base.settings import DOWNLOAD_DIR
+
 class Home(View):
 	def __init__(self,url=None):
 		self.url = url
@@ -35,5 +36,6 @@ class Home(View):
 			stream = [x for x in video.streams.filter(progressive=True)]
 			video_qual = video.streams[int(request.POST.get('download-vid')) - 1]
 			download = video_qual.download(output_path=DOWNLOAD_DIR)
+
 			return FileResponse(open(download,'rb'),as_attachment=True)
 		return render(request,'app/home.html')
