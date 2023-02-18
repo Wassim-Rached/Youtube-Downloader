@@ -30,7 +30,10 @@ class Home(View):
 			return render(request,'app/home.html',context)
 
 		elif request.POST.get('download-vid'):
-			shutil.rmtree(DOWNLOAD_DIR)
+			try:
+				shutil.rmtree(DOWNLOAD_DIR)
+			except:
+				pass
 			self.url = request.POST.get('given_url')
 			video = YouTube(self.url)
 			stream = [x for x in video.streams.filter(progressive=True)]
