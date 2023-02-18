@@ -52,7 +52,7 @@
       }
       .input_butn > input {
         outline: none;
-        flex: 1;
+        width: 80%;
         border: none;
       }
       .input_butn > button {
@@ -61,10 +61,12 @@
         border: none;
         background: gray;
         color: #fff;
-        width: 80px;
+        width: 20%;
+        min-width: 80px;
       }
       .input_butn > button:hover {
         background: #ff0000;
+        transition: ease-in-out 0.3s;
       }
       .vid {
         display: flex;
@@ -92,6 +94,15 @@
       }
       td {
         padding: 10px;
+      }
+      @media only screen and (max-width: 600px) {
+        body {
+          font-size: small;
+        }
+        td {
+          padding: 2px;
+          font-size: 10px;
+        }
       }
       table {
         width: 100%;
